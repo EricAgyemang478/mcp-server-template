@@ -121,4 +121,4 @@ test/                 # in-memory client/server tests
 
 ## License
 
-[MIT](./LICENSE) © Eric Opoku
+[MIT](./LICENSE) © Eric Agyemang
