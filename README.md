@@ -26,6 +26,14 @@ Construction is kept separate from transport, so the **same server** runs over
 stdio in production and over an in-memory transport in tests — no mocks. Full
 write-up in [ARCHITECTURE.md](./ARCHITECTURE.md).
 
+## Enterprise architecture
+
+| Pillar              | How the template applies it                                                                                              |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| **Resilience**      | a thrown tool handler is contained per call (returned as an error result) — one bad call never crashes the server        |
+| **Observability**   | structured, leveled logging to **stderr** (stdout is reserved for the MCP protocol)                                      |
+| **Reproducibility** | committed lockfile + Node pinned via `.nvmrc`, and tests that run the real server over an in-memory transport — no mocks |
+
 ## Features
 
 - 🧩 **Modular tools** — one file per tool group, registered in one place
