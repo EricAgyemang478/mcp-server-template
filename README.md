@@ -1,6 +1,6 @@
 # MCP Server Template
 
-[![CI](https://img.shields.io/github/actions/workflow/status/your-handle/mcp-server-template/ci.yml?branch=main&label=CI)](https://github.com/your-handle/mcp-server-template/actions/workflows/ci.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/EricAgyemang478/mcp-server-template/ci.yml?branch=main&label=CI)](https://github.com/EricAgyemang478/mcp-server-template/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-34d399)](./LICENSE)
 [![Node](https://img.shields.io/badge/node-%E2%89%A520-339933)](.nvmrc)
 
@@ -11,6 +11,20 @@ server starts at mile 10.
 
 It ships with three example tools that cover the shapes you'll actually build:
 a **pure** tool, a **networked** tool, and a **stateful** tool.
+
+## Architecture
+
+```mermaid
+flowchart TD
+    Client["MCP client<br/>Claude Desktop · IDE · agent"] -->|JSON-RPC over stdio| Entry["index.ts<br/>load env · connect transport"]
+    Entry --> Server["server.ts<br/>buildServer()"]
+    Server --> Tools["tools/*<br/>name + zod schema + handler"]
+    Tools --> Lib["lib/*<br/>logger · result · http · env"]
+```
+
+Construction is kept separate from transport, so the **same server** runs over
+stdio in production and over an in-memory transport in tests — no mocks. Full
+write-up in [ARCHITECTURE.md](./ARCHITECTURE.md).
 
 ## Features
 
