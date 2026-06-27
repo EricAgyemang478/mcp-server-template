@@ -102,13 +102,6 @@ Example config (e.g. Claude Desktop) in [`examples/mcp-config.json`](examples/mc
 }
 ```
 
-## Architecture
-
-A short, layered design — entrypoint → server factory → tool groups → small
-shared libs. Construction is separate from transport, which is what makes it
-both testable and easy to extend. Full write-up with a request-lifecycle diagram
-in **[ARCHITECTURE.md](./ARCHITECTURE.md)**.
-
 ## Testing
 
 `npm test` builds the real server, connects a real MCP client over an in-memory
