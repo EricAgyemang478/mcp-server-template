@@ -1,0 +1,14 @@
+node_modules/
+dist/
+
+# runtime state written by the notes tools
+state/
+
+# secrets — never commit
+.env
+.env.*
+!.env.example
+
+*.log
+.DS_Store
+coverage/
